@@ -35,8 +35,7 @@ Currently I have implemented just a small clock, in two slightly different versi
 * Problems and thoughts
 
 Unlike Conky, Emacs is not really meant to be a desktop drawing tool. One notably difficulty I found was aligning text. We don't work with pixels in Emacs, we work with columns and rows, so aligning text wasn't as perfect as I would like 
-it. I think I have also found a bug in 'fit-frame-to-buffer' function, which is supposed to fit a frame around the buffer like a minimal bounding box. However when applied, fit-frame-to-buffer, clipped too much and resulted in wrapped
-text. I had to explicitly add one column to the buffer to adjust the frame width so text does not get wrapped around or clipped.
+it.
 
 I also had a problem with line spacing. In "metro style" I would like to have somewhat denser lines, but I don't see how to implement this. As I understand the documentation we can use 'line-spacing' for this, with nil value meaning no
 extra spacing applied, but I think it is still too much space between lines. I am not sure how to create effect of denser lines. If anyone knows how to, advice or pr/patch are appreciated.

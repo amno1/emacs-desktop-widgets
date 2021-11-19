@@ -56,7 +56,7 @@
   :group 'emacs-vision-clock)
 
 (defface emacs-vision-clock-time-face
-  '((t :weight bold :family "Poiret One" :default nil
+  '((t :weight light :family "Poiret One" :default nil
        :foreground "white" :height 900))
   "Default face for emacs-vision-clock frame."
   :group 'emacs-vision-clock)
@@ -92,6 +92,7 @@
                 (vertical-scroll-bars . nil)
                 (border-width . 0)
                 (internal-border-width . 0)
+                (no-special-glyphs . t)
                 (visibility . nil)
                 (z-group . below)
                 (auto-raise . nil)
@@ -114,7 +115,8 @@
     (erase-buffer)
     (insert (evc--time) "\n " (evc--day) ". " (evc--month))
     (let ((fill-column (- (line-end-position) (line-beginning-position))))
-      (goto-char (point-min))
+      (center-line)
+      (forward-line -1)
       (center-line))
     (setq evc--buffer (current-buffer))))
 
