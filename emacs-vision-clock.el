@@ -26,7 +26,7 @@
 (require 'time-stamp)
 
 (defgroup emacs-vision-clock nil
-  "Conky line clock and weather monitoring application written in Emacs Lisp."
+  "Conky like clock application written in Emacs Lisp."
   :prefix "evc--"
   :prefix "emacs-vision-clock-"
   :tag "Conky-Vision style clock as Emacs application."
