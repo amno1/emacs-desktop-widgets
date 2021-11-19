@@ -13,7 +13,7 @@ not least, did I mention the most important: it is just so darn cool! :).
 
 Currently here is a small cloc implemented, in two slightly different versions. It is nothing special, just a very minimal test to see how it works with transparency and Emacs frames as desktop widgets.
 
-* Conky Vision Clock
+* Conky-Vision Style Clock
 
 [[./images/vision-style-clock.png]]
 
@@ -21,7 +21,7 @@ This demo implements a small clock based on [[https://github.com/BobbyBakes/conk
 
 After the file is loaded into Emacs start applicaiton with: M-x emacs-vision-clock-run . Stop it with: M-x emacs-vision-clock-stop.
 
-* Conky Metro Clock
+* Conky-Metro Style Clock
 
 [[./images/metro-style-clock.png]]
 
