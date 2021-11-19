@@ -27,7 +27,7 @@ After the file is loaded into Emacs start applicaiton with: M-x emacs-vision-clo
 
 Similarly, for this one you will need to load emacs-metro-clock.el, and then run M-x emacs-metro-clock-run to start it, and M-x emacs-metro-clock-stop to stop it.
 
-"Metro styel clcok" is inspired by [[https://www.deviantart.com/satya164/art/Conky-Metro-Clock-245432929][Conky Metro Clock]]. This one shouldn't require anything special installed since it uses Open Sans font.
+"Metro style" clock is inspired by [[https://www.deviantart.com/satya164/art/Conky-Metro-Clock-245432929][Conky Metro Clock]]. This one shouldn't require anything special installed since it uses Open Sans font.
 
 Obviously for both you will have to comile yourself Emacs with the TheVaffels patch.
 
