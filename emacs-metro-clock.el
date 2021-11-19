@@ -26,7 +26,7 @@
 (require 'time-stamp)
 
 (defgroup emacs-metro-clock nil
-  "Conky line clock and weather monitoring application written in Emacs Lisp."
+  "Conky like clock application written in Emacs Lisp."
   :prefix "emc--"
   :prefix "emacs-metro-clock-"
   :tag "Conky metro style clock for Emacs"
