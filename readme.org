@@ -34,12 +34,12 @@ Currently I have implemented just a small clock, in two slightly different versi
 
 * Problems and thoughts
 
-Unlike Conky, Emacs is not really meant to be a desktop drawing tool. One notably difficulty I found was aligning text. We don't work with pixels in Emacs, we work with columns and rows, so aligning text wasn't as perfect as I would expect
-it. I think I also found a bug in 'fit-frame-to-buffer' function, which is supposed to fit a frame around the buffer like a minimal bounding box. However when applied, fit-frame-to-buffer, clipped too much and resulted in wrapped text. I
-had to explicitly add one column to frame width.
+Unlike Conky, Emacs is not really meant to be a desktop drawing tool. One notably difficulty I found was aligning text. We don't work with pixels in Emacs, we work with columns and rows, so aligning text wasn't as perfect as I would like 
+it. I think I have also found a bug in 'fit-frame-to-buffer' function, which is supposed to fit a frame around the buffer like a minimal bounding box. However when applied, fit-frame-to-buffer, clipped too much and resulted in wrapped
+text. I had to explicitly add one column to the buffer to adjust the frame width so text does not get wrapped around or clipped.
 
 I also had a problem with line spacing. In "metro style" I would like to have somewhat denser lines, but I don't see how to implement this. As I understand the documentation we can use 'line-spacing' for this, with nil value meaning no
-extra spacing applied, but I think it is still too much space. I am not sure how to create effect of denser lines. If anyone know how to, advice or pr/patch are appreciated.
+extra spacing applied, but I think it is still too much space between lines. I am not sure how to create effect of denser lines. If anyone knows how to, advice or pr/patch are appreciated.
 
 Another obvious issue is that we can't easily draw lines, rectangles and other graphics in an Emacs buffer. However we implemented a widget as an SVG image. We can draw both text, graphics and images to an SVG image, and than just insert
 the image into Emacs buffer for display in a widget frame. Currently, the transparency patch is just in alpha stage, so it does not support transparent images, but there a lot of Conky scripts that use solid background, so this strategy
