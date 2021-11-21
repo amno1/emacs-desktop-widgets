@@ -41,5 +41,6 @@ I also had a problem with line spacing. In "metro style" I would like to have so
 extra spacing applied, but I think it is still too much space between lines. I am not sure how to create effect of denser lines. If anyone knows how to, advice or pr/patch are appreciated.
 
 Another obvious issue is that we can't easily draw lines, rectangles and other graphics in an Emacs buffer. However we could draw both text, graphics and images to an SVG image, and than just insert the image into Emacs buffer for display
-in a widget frame. Currently, the transparency patch is just in alpha stage, so it does not support transparent images, but there a lot of Conky scripts that use solid background, so this strategy should be already usable. I guess, ones the
-patch is finnished and accepted into Emacs, we would be able to draw SVG images with transparent background too. I haven't had time to implement some opaque widget, but when I do, I'll put it here too.
+in a widget frame. Currently, the transparency patch is just in alpha stage, so it does not support transparent images, but there are Conky scripts that use solid background, so this strategy should be already usable. I haven't had time to
+implement some opaque widget, but it sholdn't be anything special. A desktop widget is just an Emacs frame without decorations, with disabled input and displaying ordinary Emacs buffers like any other Emacs frame. So at least in theory, we
+can display anything as a desktop widget, org-agenda, calendar, an image, result of any shell script or even use it as a wallpaper in a maximized widget.
