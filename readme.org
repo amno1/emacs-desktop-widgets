@@ -21,12 +21,12 @@ tinkering with widgets.
 
 This repository contains some small tests, to play with [[https://github.com/TheVaffel/emacs][transparency patch by TheVaffel]]. The patch implements transparent background for Emacs frames, which at least in theory means that we can use Emacs to render some interesting
 effects on the desktop. In practice there are still some problems, most notably drawing graphics. That could be easily overcome with SVG images, but the patch still does not implement transparency for images. Hopefully this will be solved
-if patch gets accepted into offical Emacs. Hopefully it will. Meanwhile, unicode drawing characters (icon fonts, and box drawing characters) might be a way to implement some interesting funcitonality.
+if patch gets accepted into offical Emacs. Meanwhile, unicode drawing characters (icon fonts, and box drawing characters) might be a way to implement some interesting funcitonality.
 
 Why would we use Emacs instead of [[https://github.com/brndnmtthws/conky][Conky]]?
 
 Well, beside being cool in a nerdy way, I think it make sense for folks who already use Emacs, especially those who run Emacs in server mode. Another reason might be to use Lisp instead of Lua, as a better scripting language. Emacs also
-provides quite good integration with lots of OS services and third party libraries, which might help to write applications that depend on less external processes which might leat to better utilization of system resources and less
+provides quite good integration with lots of OS services and third party libraries, which might help to write applications that depend on less external processes which might lead to better utilization of system resources and less
 dependencies. Conky runs only on X11, while Emacs run on all three major OS:s, which means we could have platform independent widgets, as long as we don't integrate them with some non-portable third party applications or libraries. Last but
 not least, did I mention the most important: it is just so darn cool! :).
 
@@ -40,7 +40,6 @@ it.
 I also had a problem with line spacing. In "metro style" I would like to have somewhat denser lines, but I don't see how to implement this. As I understand the documentation we can use 'line-spacing' for this, with nil value meaning no
 extra spacing applied, but I think it is still too much space between lines. I am not sure how to create effect of denser lines. If anyone knows how to, advice or pr/patch are appreciated.
 
-Another obvious issue is that we can't easily draw lines, rectangles and other graphics in an Emacs buffer. However we implemented a widget as an SVG image. We can draw both text, graphics and images to an SVG image, and than just insert
-the image into Emacs buffer for display in a widget frame. Currently, the transparency patch is just in alpha stage, so it does not support transparent images, but there a lot of Conky scripts that use solid background, so this strategy
-should be already usable. I guess, ones the patch is finnished and accepted into Emacs, we would be able to draw SVG images with transparent background too. I haven't had time to implement some opaque widget, but when I do, I'll put it here
-too.
+Another obvious issue is that we can't easily draw lines, rectangles and other graphics in an Emacs buffer. However we could draw both text, graphics and images to an SVG image, and than just insert the image into Emacs buffer for display
+in a widget frame. Currently, the transparency patch is just in alpha stage, so it does not support transparent images, but there a lot of Conky scripts that use solid background, so this strategy should be already usable. I guess, ones the
+patch is finnished and accepted into Emacs, we would be able to draw SVG images with transparent background too. I haven't had time to implement some opaque widget, but when I do, I'll put it here too.
