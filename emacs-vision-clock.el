@@ -43,13 +43,7 @@
   :type 'fixnum
   :group 'emacs-vision-clock)
 
-(defface emacs-vision-clock-day-face
-  '((t :weight light :family "Poiret One" :default nil
-       :foreground "white" :height 340))
-  "Default face for emacs-vision-clock frame."
-  :group 'emacs-vision-clock)
-
-(defface emacs-vision-clock-month-face
+(defface emacs-vision-clock-date-face
   '((t :weight light :family "Poiret One" :default nil
        :foreground "white" :height 340))
   "Default face for emacs-vision-clock frame."
@@ -65,18 +59,17 @@
 (defvar evc--frame nil)
 (defvar evc--timer nil)
 (defvar evc--buffer nil)
-(defvar evc--day-face 'emacs-vision-clock-day-face)
+(defvar evc--date-face 'emacs-vision-clock-date-face)
 (defvar evc--time-face 'emacs-vision-clock-time-face)
-(defvar evc--month-face 'emacs-vision-clock-month-face)
 
 (defun evc--time ()
   (propertize (time-stamp-string "%H:%M") 'face evc--time-face))
 
-(defun evc--day ()
-  (propertize (capitalize (time-stamp-string "%A")) 'face evc--day-face))
-
-(defun evc--month ()
-  (propertize (capitalize (time-stamp-string "%B %d")) 'face evc--month-face))
+(defun evc--date ()
+  (propertize
+   (concat
+    (capitalize (time-stamp-string "%A")) ". "
+    (capitalize (time-stamp-string "%B %d"))) 'face evc--date-face))
 
 (defun evc--make-frame ()
   (make-frame `((name . "*emacs-vision-clock*")
@@ -103,21 +96,17 @@
                 (undecorated . t))))
 
 (defun evc--update ()
-  (select-frame evc--frame)
   (with-current-buffer evc--buffer
-    (goto-char (point-min))
-    (re-search-forward "[0-9][0-9]:[0-9][0-9]" nil t)
-    (replace-match (evc--time))))
+    (erase-buffer)
+    (insert (evc--time) "\n" (evc--date))
+    (let ((fill-column (- (line-end-position) (line-beginning-position))))
+      (center-line)
+      (forward-line -1)
+      (center-line))))
 
 (defun evc--make-buffer ()
   (with-current-buffer (get-buffer-create "  *emacs-vision-clock*")
     (setq cursor-in-non-selected-windows nil mode-line-format nil)
-    (erase-buffer)
-    (insert (evc--time) "\n " (evc--day) ". " (evc--month))
-    (let ((fill-column (- (line-end-position) (line-beginning-position))))
-      (center-line)
-      (forward-line -1)
-      (center-line))
     (setq evc--buffer (current-buffer))))
 
 (defun evc--make-widget ()
@@ -125,9 +114,9 @@
     (evc--make-buffer)
     (select-frame frame)
     (switch-to-buffer evc--buffer)
+    (evc--update)
     (delete-other-windows)
     (fit-frame-to-buffer)
-    (set-frame-width evc--frame (1+ (frame-width)))
     (make-frame-visible frame)
     (set-window-dedicated-p (selected-window) t)
     (setq evc--frame frame evc--timer (run-at-time nil 60 #'evc--update))))
